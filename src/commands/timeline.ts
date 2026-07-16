@@ -34,6 +34,6 @@ export async function timelineCommand(forceLatest: boolean = false): Promise<voi
     });
 
     console.log();
-    console.log(`  ${primary('NOW'.padEnd(16))} ${chalk.green('◉')}  ${chalk.white('Building Agritech Software & @zeeshan-dev/cli')}`);
+    console.log(`  ${primary('NOW'.padEnd(16))} ${chalk.green('◉')}  ${chalk.white('Building Agritech Software & @zeeshan-dev/software-engineer')}`);
     console.log();
 }

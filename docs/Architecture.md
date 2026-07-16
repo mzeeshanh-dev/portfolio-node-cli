@@ -2,11 +2,11 @@
 
 ## High-Level Architecture
 
-The `@zeeshan-dev/cli` package is built using Node.js and TypeScript, designed with a modular, layered architecture.
+The `@zeeshan-dev/software-engineer` package is built using Node.js and TypeScript, designed with a modular, layered architecture.
 
 ```mermaid
 graph TD
-    A["npx @zeeshan-dev/cli"] --> B[Commander.js Router]
+    A["npx @zeeshan-dev/software-engineer"] --> B[Commander.js Router]
     B --> C[Command Layer]
     C --> D[Services Layer]
     C --> E[UI Components Layer]

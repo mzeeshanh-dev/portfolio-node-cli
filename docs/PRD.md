@@ -1,7 +1,7 @@
 # Product Requirements Document (PRD)
 
 ## Product Name
-`@zeeshan-dev/cli`
+`@zeeshan-dev/software-engineer`
 
 ## Objective
 To create a production-grade, interactive terminal companion to M. Zeeshan Haider's portfolio website. The CLI should allow recruiters and fellow developers to explore Zeeshan's projects, experience, skills, and GitHub stats directly from their terminal.

@@ -1,9 +1,9 @@
-# @zeeshan-dev/cli
+# @zeeshan-dev/software-engineer
 
 > Explore M. Zeeshan Haider's developer portfolio directly from your terminal. No installation required.
 
 ```bash
-npx @zeeshan-dev/cli
+npx @zeeshan-dev/software-engineer
 ```
 
 ## Features
@@ -22,7 +22,7 @@ There are two ways to use this CLI: running it directly via `npx` (no installati
 You can run the portfolio instantly without installing anything permanently:
 
 ```bash
-npx @zeeshan-dev/cli
+npx @zeeshan-dev/software-engineer
 ```
 
 ### Option 2: Install Globally
@@ -30,14 +30,14 @@ If you want to keep the CLI on your machine and run it anywhere using a simple c
 
 ```bash
 # Install globally
-npm install -g @zeeshan-dev/cli
+npm install -g @zeeshan-dev/software-engineer
 
 # Run the CLI
 zeeshan-dev
 ```
 
 ### Direct Commands & Flags
-Whether using `npx @zeeshan-dev/cli` or the global `zeeshan-dev` command, you can pass direct commands and flags to skip the menu:
+Whether using `npx @zeeshan-dev/software-engineer` or the global `zeeshan-dev` command, you can pass direct commands and flags to skip the menu:
 
 ```bash
 # Force fetch the latest data instead of using cache

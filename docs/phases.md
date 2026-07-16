@@ -12,7 +12,7 @@
 ## Phase 2: Smart Features (v1.1)
 - **Background Sync**: Silently fetch updates in the background while the user navigates the menu.
 - **Changelog Command**: Show what's new in the CLI (`zeeshan changelog`).
-- **NPM Scope Deployment**: Officially publish to npm under `@zeeshan-dev/cli`.
+- **NPM Scope Deployment**: Officially publish to npm under `@zeeshan-dev/software-engineer`.
 
 ## Phase 3: Premium Features (v1.2+)
 - **Roadmap Command**: Show what Zeeshan is currently learning or building.
