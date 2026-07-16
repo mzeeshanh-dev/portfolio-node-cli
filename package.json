@@ -1,0 +1,64 @@
+{
+  "name": "@zeeshan-dev/cli",
+  "version": "1.0.0",
+  "description": "Explore M. Zeeshan Haider's developer portfolio from your terminal — interactive CLI with live GitHub stats, projects, experience, and more.",
+  "type": "module",
+  "bin": {
+    "zeeshan": "./dist/index.js"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "dev": "tsx src/index.ts",
+    "build": "tsup",
+    "prepare": "npm run build",
+    "test:local": "npm link",
+    "clean": "rimraf dist"
+  },
+  "keywords": [
+    "cli",
+    "portfolio",
+    "developer",
+    "terminal",
+    "interactive",
+    "zeeshan",
+    "full-stack",
+    "agritech",
+    "gis"
+  ],
+  "author": "M. Zeeshan Haider <mzeeshanh.dev@gmail.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mzeeshanh-dev/cli"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "@clack/prompts": "^0.10.0",
+    "axios": "^1.9.0",
+    "boxen": "^8.0.1",
+    "chalk": "^5.4.1",
+    "commander": "^13.1.0",
+    "conf": "^13.1.0",
+    "gradient-string": "^3.0.0",
+    "log-symbols": "^7.0.0",
+    "open": "^10.1.2",
+    "ora": "^8.2.0",
+    "terminal-link": "^4.0.0",
+    "update-notifier": "^7.3.1"
+  },
+  "devDependencies": {
+    "@types/gradient-string": "^1.1.6",
+    "@types/node": "^22.15.0",
+    "@types/update-notifier": "^6.0.8",
+    "tsup": "^8.5.0",
+    "tsx": "^4.19.0",
+    "typescript": "^5.8.0",
+    "rimraf": "^6.0.1"
+  }
+}

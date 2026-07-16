@@ -1,0 +1,92 @@
+
+// ─── Interfaces ─────────────────────────────────────────
+
+export interface Profile {
+    name: string;
+    title: string;
+    company: string;
+    location: string;
+    email: string;
+    phone: string;
+    linkedin: string;
+    github: string;
+    portfolio: string;
+    resumeUrl: string;
+    availability: string;
+    responseTime: string;
+    timezone: string;
+    status: string;
+}
+
+export interface Experience {
+    _id: string;
+    company: string;
+    role: string;
+    startDate: string;
+    endDate: string;
+    description: string;
+    skills: string[];
+    location: string;
+    isEducation: boolean;
+    order: number;
+}
+
+export interface Project {
+    _id: string;
+    title: string;
+    subtitle: string;
+    description: string;
+    tags: string[];
+    liveDemo: string;
+    githubRepo: string;
+    image: string;
+    color?: string;
+}
+
+export interface SkillCategory {
+    title: string;
+    description: string;
+    skills: string[];
+}
+
+export interface FAQ {
+    question: string;
+    answer: string;
+}
+
+// ─── GitHub API Types ───────────────────────────────────
+
+export interface GitHubProfile {
+    username: string;
+    followers: number;
+    following: number;
+    publicRepos: number;
+    avatarUrl: string;
+}
+
+export interface GitHubLanguage {
+    name: string;
+    percent: number;
+    color: string;
+}
+
+export interface GitHubTotals {
+    repositories: number;
+    commits: number;
+    prs: number;
+    issues: number;
+    contributions: number;
+}
+
+export interface GitHubData {
+    profile: GitHubProfile;
+    languages: GitHubLanguage[];
+    totals: GitHubTotals;
+}
+
+// ─── Config Types ───────────────────────────────────────
+
+export interface CLIConfig {
+    sound: boolean;
+    lastSync: string | null;
+}

@@ -1,0 +1,46 @@
+[
+    {
+        "_id": "6a5133e110fcf75b6abdba1e",
+        "company": "Earth Scan Systems",
+        "role": "Software Engineer (Full Stack)",
+        "startDate": "March 2026",
+        "endDate": "Present",
+        "description": "Developing web-based Agritech applications using Next.js, Nest.js and TypeScript.\nBuilding scalable REST APIs and backend services for agricultural monitoring, crop advisory, and data-driven workflows.\nIntegrating GIS, Remote Sensing, and geospatial datasets into web applications to enable map-based visualization and analytics.\nDeveloping decision support systems by integrating IoT sensor data and optimizing backend services for reliable agricultural monitoring and analytics.",
+        "isEducation": false,
+        "order": 0,
+        "location": "DHA Phase 5, Islamabad"
+    },
+    {
+        "_id": "6a51ca05d6ddd67e104dd1dc",
+        "company": "NexMatrix",
+        "role": "MERN Stack Developer",
+        "location": "Remote",
+        "startDate": "Jan 2026",
+        "endDate": "June 2026",
+        "description": "Developed and maintained full-stack web applications using React.js, Node.js, Express.js, MongoDB, and TypeScript.\nBuilt and integrated REST APIs with responsive frontend interfaces to improve user experience and system performance.\nCollaborated with cross-functional teams to deliver production-ready features in an Agile environment.",
+        "isEducation": false,
+        "order": 1
+    },
+    {
+        "_id": "6a51ca45d6ddd67e104dd1dd",
+        "company": "Freelancing (Project Based)",
+        "role": "Backend Developer",
+        "location": "Remote",
+        "startDate": "July 2025",
+        "endDate": "December 2025",
+        "description": "Developed scalable backend applications and RESTful APIs using Node.js, Express.js, and TypeScript.\nWorked with SQL databases and AWS S3 for data management, file storage, and backend integrations.\nImproved application reliability and performance through backend optimization, middleware enhancements, and production support.",
+        "isEducation": false,
+        "order": 2
+    },
+    {
+        "_id": "6a51cab1d6ddd67e104dd1de",
+        "company": "PMAS Arid University Rawalpindi",
+        "role": "BS Computer Science",
+        "location": "",
+        "startDate": "Oct 2022",
+        "endDate": "May 2026",
+        "description": "3.26 CGPA",
+        "isEducation": true,
+        "order": 3
+    }
+]
