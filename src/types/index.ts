@@ -57,24 +57,24 @@ export interface FAQ {
 // ─── GitHub API Types ───────────────────────────────────
 
 export interface GitHubProfile {
-    username: string;
-    followers: number;
-    following: number;
-    publicRepos: number;
+    login: string;
+    name: string;
     avatarUrl: string;
+    url: string;
+    domain: string;
+    publicRepos: number;
+    followers: number;
 }
 
 export interface GitHubLanguage {
     name: string;
-    percent: number;
-    color: string;
+    count: number;
 }
 
 export interface GitHubTotals {
+    stars: number;
+    forks: number;
     repositories: number;
-    commits: number;
-    prs: number;
-    issues: number;
     contributions: number;
 }
 
@@ -87,6 +87,5 @@ export interface GitHubData {
 // ─── Config Types ───────────────────────────────────────
 
 export interface CLIConfig {
-    sound: boolean;
     lastSync: string | null;
 }

@@ -29,8 +29,7 @@ graph TD
   - `portfolio.service.ts`: Fetches data from the Vercel API and manages fallbacks.
   - `github.service.ts`: Fetches and aggregates GitHub stats.
   - `cache.service.ts`: Manages the local JSON cache at `~/.zeeshan-cli/`.
-  - `config.service.ts`: Manages user settings (theme, sound) using the `conf` package.
-  - `analytics.service.ts`: Tracks local usage metrics.
+  - `config.service.ts`: Manages user settings (theme) using the `conf` package.
 - **`src/ui/`**: Pure presentation logic.
   - `colors.ts`: Theme definitions and `chalk` wrappers.
   - `banner.ts`: Startup banners and MOTD.

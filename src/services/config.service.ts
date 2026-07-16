@@ -4,7 +4,6 @@ import type { CLIConfig } from '../types/index.js';
 // ─── Default Config ─────────────────────────────────────
 
 const defaults: CLIConfig = {
-    sound: false,
     lastSync: null,
 };
 
@@ -19,16 +18,11 @@ const config = new Conf<CLIConfig>({
 
 export function getConfig(): CLIConfig {
     return {
-        sound: config.get('sound') as boolean,
         lastSync: config.get('lastSync') as string | null,
     };
 }
 
 // ─── Setters ────────────────────────────────────────────
-
-export function setSound(enabled: boolean): void {
-    config.set('sound', enabled);
-}
 
 export function setLastSync(date: string): void {
     config.set('lastSync', date);

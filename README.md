@@ -11,27 +11,43 @@ npx @zeeshan-dev/cli
 - **Interactive Menu** — Navigate with arrow keys, explore everything
 - **Live Data** — Projects, experience, and GitHub stats fetched from portfolio API
 - **Offline Support** — Smart caching for offline/slow networks
-- **5 Themes** — Dark (default), Light, Dracula, Nord, GitHub
 - **`--latest` Flag** — Force-sync latest data
-- **Easter Eggs** — Try `coffee`, `joke`, `42`, or `sudo hire zeeshan`
-- **Analytics** — See which sections get the most attention (fully local, anonymous)
-- **MOTD** — A new developer quote every day
+- **Cross-Platform** — Graceful fallback for terminals without Unicode support
 
-## Quick Start
+## Usage
+
+There are two ways to use this CLI: running it directly via `npx` (no installation required) or installing it globally on your system.
+
+### Option 1: Run directly with npx (Recommended)
+You can run the portfolio instantly without installing anything permanently:
 
 ```bash
-# Run directly (no install)
 npx @zeeshan-dev/cli
+```
 
-# Force latest data
-npx @zeeshan-dev/cli --latest
+### Option 2: Install Globally
+If you want to keep the CLI on your machine and run it anywhere using a simple command, install it globally via npm:
 
-# Direct commands
-npx @zeeshan-dev/cli about
-npx @zeeshan-dev/cli projects
-npx @zeeshan-dev/cli github
-npx @zeeshan-dev/cli hire
-npx @zeeshan-dev/cli resume
+```bash
+# Install globally
+npm install -g @zeeshan-dev/cli
+
+# Run the CLI
+zeeshan-dev
+```
+
+### Direct Commands & Flags
+Whether using `npx @zeeshan-dev/cli` or the global `zeeshan-dev` command, you can pass direct commands and flags to skip the menu:
+
+```bash
+# Force fetch the latest data instead of using cache
+zeeshan-dev --latest
+
+# Go directly to specific sections
+zeeshan-dev projects
+zeeshan-dev github
+zeeshan-dev hire
+zeeshan-dev contact
 ```
 
 ## Available Commands
@@ -51,13 +67,6 @@ npx @zeeshan-dev/cli resume
 | `settings` | Config, analytics, cache management |
 | `update` | Force-sync all data from portfolio |
 
-## Themes
-
-- **Dark** — Portfolio default (deep black + blue)
-- **Light** — Clean white + blue accent
-- **Dracula** — Purple + cyan vampire vibes
-- **Nord** — Arctic blue-gray
-- **GitHub** — Familiar GitHub dark mode
 
 ## Development
 
@@ -75,9 +84,21 @@ npm run dev
 # Build
 npm run build
 
+# Test
+npm run test
+
 # Test locally (links globally)
 npm link
-zeeshan
+zeeshan-dev
+```
+
+## Testing
+
+This CLI uses `vitest` for fast and reliable unit testing. We have implemented tests for API services, caching mechanisms, UI styling utilities, and command logic to ensure nothing breaks during future updates. 
+
+Run all tests:
+```bash
+npm run test
 ```
 
 ## Architecture
@@ -92,17 +113,20 @@ src/
 └── data/             # Fallback JSON data
 ```
 
-## Tech Stack
+## Design Principles & Tech Stack
+
+This package was built focusing on **SOLID**, **KISS**, and **DRY** principles. We intentionally avoided bloated frameworks like NestJS or React to keep the CLI lightweight and fast.
 
 - **TypeScript** + **ESM** — Strict, modern Node.js
-- **Commander** — CLI routing
-- **@clack/prompts** — Beautiful interactive menus
-- **Chalk** — Terminal colors
+- **Commander** — CLI routing and argument parsing
+- **@clack/prompts** — Beautiful interactive menus (Replaced older libraries to avoid redundancy)
+- **Chalk** — Terminal colors (No background colors to preserve terminal transparency)
 - **Boxen** — Bordered boxes
 - **Ora** — Spinners
 - **Conf** — Persistent settings
 - **Axios** — API requests
-
+- **is-unicode-supported** — Detects terminal capabilities to fallback to simple ASCII instead of Unicode when necessary, providing a polished experience across all OS.
+- **Vitest** — High performance unit testing
 ## Author
 
 **M. Zeeshan Haider** — Full Stack Software Engineer

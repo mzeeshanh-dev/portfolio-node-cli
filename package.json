@@ -4,7 +4,7 @@
   "description": "Explore M. Zeeshan Haider's developer portfolio from your terminal — interactive CLI with live GitHub stats, projects, experience, and more.",
   "type": "module",
   "bin": {
-    "zeeshan": "./dist/index.js"
+    "zeeshan-dev": "./dist/index.js"
   },
   "files": [
     "dist",
@@ -14,6 +14,8 @@
   "scripts": {
     "dev": "tsx src/index.ts",
     "build": "tsup",
+    "test": "vitest run",
+    "test:watch": "vitest",
     "prepare": "npm run build",
     "test:local": "npm link",
     "clean": "rimraf dist"
@@ -33,32 +35,41 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/mzeeshanh-dev/cli"
+    "url": "git+https://github.com/mzeeshanh-dev/cli.git"
   },
+  "homepage": "https://m-zeeshan-haider.vercel.app",
+  "bugs": {
+    "url": "https://github.com/mzeeshanh-dev/cli/issues"
+  },
+  "funding": "https://m-zeeshan-haider.vercel.app",
   "engines": {
     "node": ">=18"
   },
   "dependencies": {
-    "@clack/prompts": "^0.10.0",
-    "axios": "^1.9.0",
+    "@clack/prompts": "^0.9.1",
+    "axios": "^1.7.9",
     "boxen": "^8.0.1",
     "chalk": "^5.4.1",
+    "clipboardy": "^4.0.0",
     "commander": "^13.1.0",
     "conf": "^13.1.0",
-    "gradient-string": "^3.0.0",
+    "is-unicode-supported": "^2.0.0",
     "log-symbols": "^7.0.0",
-    "open": "^10.1.2",
+    "open": "^10.1.0",
     "ora": "^8.2.0",
-    "terminal-link": "^4.0.0",
     "update-notifier": "^7.3.1"
   },
   "devDependencies": {
-    "@types/gradient-string": "^1.1.6",
-    "@types/node": "^22.15.0",
+    "@types/figlet": "^1.7.0",
+    "@types/node": "^22.10.10",
     "@types/update-notifier": "^6.0.8",
-    "tsup": "^8.5.0",
-    "tsx": "^4.19.0",
-    "typescript": "^5.8.0",
-    "rimraf": "^6.0.1"
+    "eslint": "^9.0.0",
+    "figlet": "^1.11.2",
+    "prettier": "^3.0.0",
+    "rimraf": "^6.0.1",
+    "tsup": "^8.3.6",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.3",
+    "vitest": "^4.1.10"
   }
 }

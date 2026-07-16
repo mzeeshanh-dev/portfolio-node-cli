@@ -6,7 +6,15 @@ import { showMainMenu, promptContinue } from './ui/menu.js';
 import type { MenuChoice } from './ui/menu.js';
 import { dim, success, muted, accent, primary } from './ui/colors.js';
 import { getGitHubData } from './services/github.service.js';
-import { getProjects } from './services/portfolio.service.js';
+import { getProjects, syncAll } from './services/portfolio.service.js';
+import updateNotifier from 'update-notifier';
+import { readFileSync } from 'fs';
+import { fileURLToPath } from 'url';
+import path from 'path';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+const pkg = JSON.parse(readFileSync(path.join(__dirname, '../package.json'), 'utf8'));
 
 // ─── Commands ───────────────────────────────────────────
 
@@ -21,10 +29,24 @@ import { hireCommand } from './commands/hire.js';
 import { timelineCommand } from './commands/timeline.js';
 import { settingsCommand } from './commands/settings.js';
 import { updateCommand } from './commands/update.js';
+import { doctorCommand } from './commands/doctor.js';
 
 // ─── Route Commands ─────────────────────────────────────
 
+import readline from 'readline';
+
+function strictClear() {
+    process.stdout.write('\x1Bc'); // standard terminal reset
+    readline.cursorTo(process.stdout, 0, 0);
+    readline.clearScreenDown(process.stdout);
+}
+
 async function runCommand(choice: MenuChoice, forceLatest: boolean): Promise<void> {
+    if (choice !== 'exit') {
+        strictClear();
+        showBanner();
+    }
+    
     switch (choice) {
         case 'about': await aboutCommand(); break;
         case 'projects': await projectsCommand(forceLatest); break;
@@ -36,6 +58,8 @@ async function runCommand(choice: MenuChoice, forceLatest: boolean): Promise<voi
         case 'hire': await hireCommand(); break;
         case 'timeline': await timelineCommand(forceLatest); break;
         case 'settings': await settingsCommand(); break;
+        case 'update': await updateCommand(); break;
+        case 'doctor': await doctorCommand(); break;
         case 'exit':
             console.log(`\n  ${dim('👋')}  ${muted('See you later, developer.')}\n`);
             process.exit(0);
@@ -44,9 +68,15 @@ async function runCommand(choice: MenuChoice, forceLatest: boolean): Promise<voi
 
 // ─── Interactive Loop ───────────────────────────────────
 
+import { animateBanner } from './ui/animations.js';
+
 async function interactiveMode(forceLatest: boolean): Promise<void> {
+    // Check for CLI updates globally
+    const notifier = updateNotifier({ pkg });
+    notifier.notify({ isGlobal: true });
+
     // Boot sequence
-    showBanner();
+    await animateBanner();
     await showBootSequence();
 
     // Welcome status
@@ -79,9 +109,11 @@ async function interactiveMode(forceLatest: boolean): Promise<void> {
     } catch {
     }
 
-    // If --latest, force sync first
+    // If --latest, force sync first. Otherwise, silent background sync!
     if (forceLatest) {
         await updateCommand();
+    } else {
+        syncAll(true).catch(() => {});
     }
 
     // Menu loop
@@ -102,7 +134,8 @@ async function interactiveMode(forceLatest: boolean): Promise<void> {
                 running = false;
                 console.log(`\n  ${dim('👋')}  ${muted('See you later, developer.')}\n`);
             } else {
-                console.clear();
+                strictClear();
+                showBanner();
             }
         }
     }
@@ -155,56 +188,73 @@ program
 // ─── Direct Subcommands ─────────────────────────────────
 
 program.command('about').description('About Zeeshan').action(async () => {
+    strictClear();
     showBanner();
     await aboutCommand();
 });
 
 program.command('projects').description('View projects').action(async () => {
+    strictClear();
     showBanner();
     await projectsCommand(program.opts().latest);
 });
 
 program.command('experience').description('Work experience & education').action(async () => {
+    strictClear();
     showBanner();
     await experienceCommand(program.opts().latest);
 });
 
 program.command('skills').description('Skills & technologies').action(async () => {
+    strictClear();
     showBanner();
     await skillsCommand();
 });
 
 program.command('github').description('Live GitHub stats').action(async () => {
+    strictClear();
     showBanner();
     await githubCommand(program.opts().latest);
 });
 
 program.command('resume').description('Open resume in browser').action(async () => {
+    strictClear();
     await resumeCommand();
 });
 
 program.command('contact').description('Contact information').action(async () => {
+    strictClear();
     showBanner();
     await contactCommand();
 });
 
 program.command('hire').description("Let's build something awesome").action(async () => {
+    strictClear();
     showBanner();
     await hireCommand();
 });
 
 program.command('timeline').description('Career journey timeline').action(async () => {
+    strictClear();
     showBanner();
     await timelineCommand(program.opts().latest);
 });
 
 program.command('settings').description('View & manage settings').action(async () => {
+    strictClear();
     await settingsCommand();
 });
 
 program.command('update').aliases(['sync']).description('Force-sync latest data').action(async () => {
+    strictClear();
     showBanner();
     await updateCommand();
+});
+
+program.command('doctor').description('Diagnostics & API Status').action(async () => {
+    strictClear();
+    showBanner();
+    await doctorCommand();
 });
 
 // ─── Easter Egg Commands ────────────────────────────────

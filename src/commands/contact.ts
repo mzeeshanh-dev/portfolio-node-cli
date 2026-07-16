@@ -1,5 +1,5 @@
 import chalk from 'chalk';
-import terminalLink from 'terminal-link';
+
 import { getProfile } from '../services/portfolio.service.js';
 import { primary, muted, dim, divider, label, success } from '../ui/colors.js';
 
@@ -14,9 +14,9 @@ export async function contactCommand(): Promise<void> {
     console.log(label('Email', profile.email));
     console.log(label('Phone', profile.phone));
     
-    const linkedIn = terminalLink(chalk.blue(profile.linkedin), profile.linkedin, { fallback: false });
-    const github = terminalLink(chalk.blue(profile.github), profile.github, { fallback: false });
-    const portfolio = terminalLink(chalk.blue(profile.portfolio), profile.portfolio, { fallback: false });
+    const linkedIn = chalk.blue(profile.linkedin);
+    const github = chalk.blue(profile.github);
+    const portfolio = chalk.blue(profile.portfolio);
 
     console.log(label('LinkedIn', linkedIn));
     console.log(label('GitHub', github));

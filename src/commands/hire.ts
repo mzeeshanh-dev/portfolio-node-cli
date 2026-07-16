@@ -1,41 +1,59 @@
 import chalk from 'chalk';
-import terminalLink from 'terminal-link';
+
 import { getProfile } from '../services/portfolio.service.js';
 import { primary, muted, dim, divider, success } from '../ui/colors.js';
+import * as p from '@clack/prompts';
+import open from 'open';
+import clipboardy from 'clipboardy';
 
 export async function hireCommand(): Promise<void> {
     const profile = getProfile();
 
     console.log();
-    console.log(chalk.hex('#1e293b')('┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓'));
-    console.log(chalk.hex('#1e293b')('┃                                                      ┃'));
-    console.log(chalk.hex('#1e293b')('┃') + `   ${chalk.bold.white('Let\'s build something awesome.')}                     ` + chalk.hex('#1e293b')('┃'));
-    console.log(chalk.hex('#1e293b')('┃                                                      ┃'));
-    console.log(chalk.hex('#1e293b')('┃') + `   ${muted('I build production-ready full-stack software that')}  ` + chalk.hex('#1e293b')('┃'));
-    console.log(chalk.hex('#1e293b')('┃') + `   ${muted('solves real business problems — not just websites.')} ` + chalk.hex('#1e293b')('┃'));
-    console.log(chalk.hex('#1e293b')('┃                                                      ┃'));
-    console.log(chalk.hex('#1e293b')('┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛'));
+    console.log(chalk.hex('#1e293b')('╭─────────────────────────────────────────────────────────╮'));
+    console.log(chalk.hex('#1e293b')('│') + '                                                         ' + chalk.hex('#1e293b')('│'));
+    console.log(chalk.hex('#1e293b')('│') + `   ${chalk.bold.white('Let\'s build something awesome.')}                      ` + chalk.hex('#1e293b')('│'));
+    console.log(chalk.hex('#1e293b')('│') + '                                                         ' + chalk.hex('#1e293b')('│'));
+    console.log(chalk.hex('#1e293b')('│') + `   ${'📧 Email'.padEnd(16)} ${chalk.white(profile.email).padEnd(36)}` + chalk.hex('#1e293b')('│'));
+    console.log(chalk.hex('#1e293b')('│') + `   ${'💼 LinkedIn'.padEnd(16)} ${chalk.blue(profile.linkedin).padEnd(36 + (chalk.blue(profile.linkedin).length - profile.linkedin.length))}` + chalk.hex('#1e293b')('│'));
+    console.log(chalk.hex('#1e293b')('│') + `   ${'🌐 Portfolio'.padEnd(16)} ${chalk.blue(profile.portfolio).padEnd(36 + (chalk.blue(profile.portfolio).length - profile.portfolio.length))}` + chalk.hex('#1e293b')('│'));
+    console.log(chalk.hex('#1e293b')('│') + `   ${'📍 Location'.padEnd(16)} ${chalk.white(profile.location).padEnd(36)}` + chalk.hex('#1e293b')('│'));
+    console.log(chalk.hex('#1e293b')('│') + `   ${'🟢 Available'.padEnd(16)} ${chalk.white(profile.availability).padEnd(36)}` + chalk.hex('#1e293b')('│'));
+    console.log(chalk.hex('#1e293b')('│') + `   ${'⏱  Response'.padEnd(16)} ${chalk.white(profile.responseTime).padEnd(36)}` + chalk.hex('#1e293b')('│'));
+    console.log(chalk.hex('#1e293b')('│') + '                                                         ' + chalk.hex('#1e293b')('│'));
+    console.log(chalk.hex('#1e293b')('╰─────────────────────────────────────────────────────────╯'));
     console.log();
 
-    console.log(`  ${primary('Why work with me?')}`);
-    console.log();
-    console.log(`  ${success('✔')}  ${chalk.white('End-to-end')} — I handle frontend, backend, and deployment.`);
-    console.log(`  ${success('✔')}  ${chalk.white('Production mindset')} — Auth, error handling, performance from day 1.`);
-    console.log(`  ${success('✔')}  ${chalk.white('Domain depth')} — Agritech, GIS, SaaS — not just CRUD apps.`);
-    console.log(`  ${success('✔')}  ${chalk.white('Ship & iterate')} — I deliver working software, then improve it.`);
-    
-    console.log();
-    console.log(divider(50));
-    console.log();
+    const choice = await p.select({
+        message: 'Get in touch:',
+        options: [
+            { value: 'email', label: 'Send Email', hint: 'Opens default mail client' },
+            { value: 'copy', label: 'Copy Email', hint: 'Copy to clipboard' },
+            { value: 'linkedin', label: 'Open LinkedIn', hint: 'Opens in browser' },
+            { value: 'portfolio', label: 'Open Portfolio', hint: 'Opens in browser' },
+            { value: 'back', label: '← Back' },
+        ]
+    });
 
-    console.log(`  ${muted('Email'.padEnd(15))} ${chalk.white(profile.email)}`);
-    console.log(`  ${muted('Phone'.padEnd(15))} ${chalk.white(profile.phone)}`);
-    console.log(`  ${muted('LinkedIn'.padEnd(15))} ${chalk.blue(terminalLink(profile.linkedin, profile.linkedin, { fallback: false }))}`);
-    console.log(`  ${muted('Portfolio'.padEnd(15))} ${chalk.blue(terminalLink(profile.portfolio, profile.portfolio, { fallback: false }))}`);
-    console.log(`  ${muted('Timezone'.padEnd(15))} ${chalk.white(profile.timezone)}`);
-    console.log();
+    if (p.isCancel(choice) || choice === 'back') {
+        return;
+    }
 
-    console.log(`  🟢  ${dim('Current Availability:')} ${chalk.white(profile.availability)}`);
-    console.log(`  ⏱   ${dim('Response Time:')} ${chalk.white(profile.responseTime)}`);
-    console.log();
+    if (choice === 'email') {
+        await open(`mailto:${profile.email}`);
+        console.log(`\n  ${success('✔')}  ${chalk.white('Opened email client.')}\n`);
+    } else if (choice === 'copy') {
+        try {
+            clipboardy.writeSync(profile.email);
+            console.log(`\n  ${success('✔')}  ${chalk.white('Copied email to clipboard!')}\n`);
+        } catch {
+            console.log(`\n  ${chalk.yellow('⚠')}  ${chalk.white('Failed to copy. Email is: ' + profile.email)}\n`);
+        }
+    } else if (choice === 'linkedin') {
+        await open(profile.linkedin);
+        console.log(`\n  ${success('✔')}  ${chalk.white('Opened LinkedIn in browser.')}\n`);
+    } else if (choice === 'portfolio') {
+        await open(profile.portfolio);
+        console.log(`\n  ${success('✔')}  ${chalk.white('Opened Portfolio in browser.')}\n`);
+    }
 }

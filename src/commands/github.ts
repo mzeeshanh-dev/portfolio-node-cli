@@ -12,24 +12,26 @@ export async function githubCommand(forceLatest: boolean = false): Promise<void>
     }
 
     console.log();
-    console.log(`  ${primary('Octocat Stats')} ${dim(`(@${github.profile.username})`)}`);
+    console.log(`  ${primary('Octocat Stats')} ${dim(`(@${github.profile.login})`)}`);
     console.log(divider(50));
     console.log();
 
     console.log(label('Followers', github.profile.followers.toString()));
     console.log(label('Public Repos', github.totals.repositories.toString()));
-    console.log(label('Total Commits', github.totals.commits.toString()));
     console.log(label('Contributions', github.totals.contributions.toString()));
-    console.log(label('Issues & PRs', (github.totals.issues + github.totals.prs).toString()));
+    console.log(label('Stars', github.totals.stars.toString()));
+    console.log(label('Forks', github.totals.forks.toString()));
     console.log();
 
     console.log(`  ${primary('Top Languages')}`);
     console.log(divider(50));
     console.log();
     
+    const totalCount = github.languages.reduce((acc, lang) => acc + lang.count, 0);
     github.languages.slice(0, 5).forEach(lang => {
-        const bar = '█'.repeat(Math.max(1, Math.round(lang.percent / 5)));
-        console.log(`  ${muted(lang.name.padEnd(12))} ${chalk.hex(lang.color)(bar)} ${dim(`${lang.percent}%`)}`);
+        const percent = totalCount > 0 ? Math.round((lang.count / totalCount) * 100) : 0;
+        const bar = '█'.repeat(Math.max(1, Math.round(percent / 5)));
+        console.log(`  ${muted(lang.name.padEnd(12))} ${chalk.cyan(bar)} ${dim(`${percent}%`)}`);
     });
     console.log();
 }

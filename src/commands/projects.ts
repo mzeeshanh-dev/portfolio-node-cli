@@ -1,7 +1,7 @@
 import chalk from 'chalk';
 import * as p from '@clack/prompts';
 import open from 'open';
-import terminalLink from 'terminal-link';
+
 import { getProjects } from '../services/portfolio.service.js';
 import { primary, muted, dim, divider, accent } from '../ui/colors.js';
 import { withSpinner } from '../ui/spinner.js';
@@ -41,8 +41,7 @@ export async function projectsCommand(forceLatest: boolean = false): Promise<voi
 
     // Image Link
     if (selected.image) {
-        const link = terminalLink('View Project Image (Click me)', selected.image, { fallback: false });
-        console.log(`  ${chalk.blue.underline(link)}`);
+        console.log(`  ${chalk.blue.underline(selected.image)}`);
         console.log();
     }
 

@@ -4,25 +4,27 @@ import { getThemeByName } from './colors.js';
 
 export function showBanner(): void {
     const colors = getThemeByName('dark');
+    const art = [
+        "███████╗███████╗███████╗███████╗██╗  ██╗ █████╗ ███╗   ██╗      ██████╗ ███████╗██╗   ██╗",
+        "╚══███╔╝██╔════╝██╔════╝██╔════╝██║  ██║██╔══██╗████╗  ██║      ██╔══██╗██╔════╝██║   ██║",
+        "  ███╔╝ █████╗  █████╗  ███████╗███████║███████║██╔██╗ ██║█████╗██║  ██║█████╗  ██║   ██║",
+        " ███╔╝  ██╔══╝  ██╔══╝  ╚════██║██╔══██║██╔══██║██║╚██╗██║╚════╝██║  ██║██╔══╝  ╚██╗ ██╔╝",
+        "███████╗███████╗███████╗███████║██║  ██║██║  ██║██║ ╚████║      ██████╔╝███████╗ ╚████╔╝ ",
+        "╚══════╝╚══════╝╚══════╝╚══════╝╚═╝  ╚═╝╚═╝  ╚═╝╚═╝  ╚═══╝      ╚═════╝ ╚══════╝  ╚═══╝  "
+    ];
 
-    const title = chalk.bold.white('⚡  ZEESHAN.DEV CLI');
-    const version = chalk.hex(colors.secondary)('v1.0.0');
+    console.log('\n');
+    for (let i = 0; i < art.length; i++) {
+        console.log('  ' + chalk.hex(colors.primary)(art[i]));
+    }
+    console.log();
+
+    const subtitle = chalk.hex(colors.accent)('Full Stack Software Engineer') + '\n  ' +
+                     chalk.hex(colors.accent)('Agritech Software Engineer') + '\n  ' + 
+                     chalk.hex(colors.accent)('GIS & Remote Sensing');
     
-    const subtitle = chalk.hex(colors.accent)(
-        'Full Stack  •  Agritech  •  GIS  •  Remote Sensing'
-    );
-
-    const content = `\n  ${title}  ${version}\n\n  ${subtitle}\n`;
-
-    console.log(
-        boxen(content, {
-            padding: 0,
-            margin: { top: 1, bottom: 1 },
-            borderColor: colors.primary,
-            borderStyle: 'bold',
-            align: 'left',
-        })
-    );
+    console.log('  ' + subtitle);
+    console.log();
 }
 
 export function showWelcomeStatus(isOffline: boolean): void {

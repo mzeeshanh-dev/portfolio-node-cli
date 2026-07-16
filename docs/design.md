@@ -1,9 +1,9 @@
 # Design System
 
-The CLI design system is heavily inspired by Zeeshan's Next.js web portfolio to ensure a cohesive brand experience.
+I designed the CLI's aesthetics to closely match my Next.js web portfolio, ensuring a consistent and recognizable brand experience. 
 
 ## Core Philosophy
-"Professional > Flashy". The CLI should feel like a premium developer tool (like `vercel cli` or `gh cli`), not an over-the-top hacker script.
+I wanted the CLI to feel like a premium, professional developer tool (similar to tools like Vercel CLI or GitHub CLI). It should be clean, snappy, and readable—not an over-the-top, cluttered hacker script.
 
 ## Theme Architecture
 
