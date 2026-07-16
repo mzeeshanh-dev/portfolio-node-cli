@@ -4,7 +4,7 @@
   "description": "Explore M. Zeeshan Haider's developer portfolio from your terminal — interactive CLI with live GitHub stats, projects, experience, and more.",
   "type": "module",
   "bin": {
-    "zeeshan-dev": "./dist/index.js"
+    "zeeshan-dev": "dist/index.js"
   },
   "main": "./dist/index.js",
   "publishConfig": {
