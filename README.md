@@ -72,8 +72,8 @@ zeeshan-dev contact
 
 ```bash
 # Clone
-git clone https://github.com/mzeeshanh-dev/cli.git
-cd cli
+git clone https://github.com/mzeeshanh-dev/portfolio-node-cli
+cd portfolio-node-cli
 
 # Install dependencies
 npm install
