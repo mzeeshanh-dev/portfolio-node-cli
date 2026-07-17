@@ -1,6 +1,6 @@
 {
   "name": "@zeeshan-dev/software-engineer",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Explore M. Zeeshan Haider's developer portfolio from your terminal — interactive CLI with live GitHub stats, projects, experience, and more.",
   "type": "module",
   "bin": {
