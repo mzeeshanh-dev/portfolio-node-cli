@@ -1,3 +1,8 @@
+
+## Preview
+
+<img width="640" height="360" alt="demo" src="https://github.com/user-attachments/assets/77f77129-29c5-4c29-9e5e-c02fcfc86ffc" />
+
 # @zeeshan-dev/software-engineer
 
 > Explore M. Zeeshan Haider's developer portfolio directly from your terminal. No installation required.
@@ -5,14 +10,6 @@
 ```bash
 npx @zeeshan-dev/software-engineer
 ```
-
-## Preview
-
-<img width="640" height="360" alt="demo" src="https://github.com/user-attachments/assets/77f77129-29c5-4c29-9e5e-c02fcfc86ffc" />
-
-
-
-
 
 ## Features
 
