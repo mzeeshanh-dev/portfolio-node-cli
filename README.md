@@ -6,6 +6,10 @@
 npx @zeeshan-dev/software-engineer
 ```
 
+## Preview
+
+<video src="./assets/demo.mp4" controls autoplay loop muted playsinline width="100%"></video>
+
 ## Features
 
 - **Interactive Menu** — Navigate with arrow keys, explore everything
