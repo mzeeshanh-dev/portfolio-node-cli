@@ -8,7 +8,11 @@ npx @zeeshan-dev/software-engineer
 
 ## Preview
 
-https://github.com/mzeeshanh-dev/portfolio-node-cli/raw/main/assets/demo.mp4
+
+
+https://github.com/user-attachments/assets/86b7aaeb-f4ee-42c6-8ff5-a7ea9e3aae10
+
+
 
 ## Features
 
