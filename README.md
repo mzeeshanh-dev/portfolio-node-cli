@@ -8,9 +8,9 @@ npx @zeeshan-dev/software-engineer
 
 ## Preview
 
+<img width="640" height="360" alt="demo" src="https://github.com/user-attachments/assets/77f77129-29c5-4c29-9e5e-c02fcfc86ffc" />
 
 
-https://github.com/user-attachments/assets/86b7aaeb-f4ee-42c6-8ff5-a7ea9e3aae10
 
 
 
