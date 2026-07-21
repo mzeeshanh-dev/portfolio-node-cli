@@ -8,7 +8,7 @@ npx @zeeshan-dev/software-engineer
 
 ## Preview
 
-<video src="https://github.com/mzeeshanh-dev/portfolio-node-cli/raw/main/assets/demo.mp4" controls autoplay loop muted playsinline width="100%"></video>
+https://github.com/mzeeshanh-dev/portfolio-node-cli/raw/main/assets/demo.mp4
 
 ## Features
 
